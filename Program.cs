@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 namespace escola; //school;
 
@@ -9,16 +10,46 @@ public class Program
     {
         // tipo nomeDaVariavel;
         float nota1, nota2, nota3, media;
-        string opcao;        
+        string opcao;   
+        bool estaLogado = false;     
 
-        List <Professor> professores = new List<Professor>();
-
+        List <Professor> listaProfessores = new List<Professor>();
         Professor professorAtual = new Professor();
 
-        professorAtual = professorAtual.CadastrarProfessor(professorAtual);
-        professores.Add(professorAtual);
+        do{
+            
+          int opcaoMenu;
+        Console.WriteLine("========TELA DE LOGIN========");
+        Console.WriteLine("1 - Cadastrar Professor");
+        Console.WriteLine("2 - Fazer Login");
+        //Console.WriteLine("3- Calcular média");
+        Console.WriteLine("3 - Fechar o programa");
+        Console.WriteLine("Digite uma das opções acima: ");
 
-        bool estaLogado = professorAtual.Login(professores);
+        opcaoMenu = int.Parse(Console.ReadLine()?? "");
+        
+        switch (opcaoMenu)
+        {
+            case 1: 
+          
+                professorAtual = professorAtual.CadastrarProfessor(professorAtual);
+                listaProfessores.Add(professorAtual);
+
+              break;
+            case 2:
+               estaLogado = professorAtual.Login(listaProfessores);
+
+            break;
+            case 3:
+                estaLogado = false;
+                break;
+            default:
+            Console.WriteLine("Digite um número entre 1 e 3");
+                break;
+        }
+        }while(estaLogado == false);
+        
+
 
         if(estaLogado == true){
             do{

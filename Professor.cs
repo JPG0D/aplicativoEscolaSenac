@@ -32,9 +32,7 @@ public class Professor
 
     }
 
-    public void Menu(){
-        
-    }
+     
     public bool Login(List <Professor> listaProfessores)
     {
         int tentativas = 3;
