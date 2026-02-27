@@ -11,7 +11,8 @@ public class Program
         // tipo nomeDaVariavel;
         float nota1, nota2, nota3, media;
         string opcao;   
-        bool estaLogado = false;     
+        bool estaLogado = false;
+        bool programaFinalizado = false;   
 
         List <Professor> listaProfessores = new List<Professor>();
         Professor professorAtual = new Professor();
@@ -34,6 +35,7 @@ public class Program
           
                 professorAtual = professorAtual.CadastrarProfessor(professorAtual);
                 listaProfessores.Add(professorAtual);
+                professorAtual = new Professor();
 
               break;
             case 2:
@@ -42,12 +44,14 @@ public class Program
             break;
             case 3:
                 estaLogado = false;
+                programaFinalizado = true;
                 break;
+            
             default:
             Console.WriteLine("Digite um número entre 1 e 3");
                 break;
         }
-        }while(estaLogado == false);
+        }while(estaLogado == false && programaFinalizado == false);
         
 
 
